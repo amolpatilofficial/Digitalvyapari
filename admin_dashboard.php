@@ -10,7 +10,7 @@ require 'config.php';
 $state_query = "SELECT state, COUNT(*) as count FROM User_details GROUP BY state";
 $state_result = $conn->query($state_query);
 $states = [];
-$state_counts = [];
+$state_counts = [] ;
 while ($row = $state_result->fetch_assoc()) {
     $states[] = $row['state'];
     $state_counts[] = $row['count'];
