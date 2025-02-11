@@ -27,14 +27,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $taluka = mysqli_real_escape_string($conn, $_POST['taluka']);
     $village = mysqli_real_escape_string($conn, $_POST['village']);
 
-    // Insert query
-    $sql = "INSERT INTO User_details (first_name, last_name, mobile_no, state, district, taluka, village) 
-            VALUES ('$first_name', '$last_name', '$mobile_no', '$state', '$district', '$taluka', '$village')";
+    // Check if mobile number already exists
+    $check_query = "SELECT * FROM User_details WHERE mobile_no='$mobile_no'";
+    $result = $conn->query($check_query);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Registration successful!');</script>";
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Error: Mobile number already exists.');</script>";
     } else {
-        echo "<script>alert('Error: " . $conn->error . "');</script>";
+        // Insert query
+        $sql = "INSERT INTO User_details (first_name, last_name, mobile_no, state, district, taluka, village) 
+                VALUES ('$first_name', '$last_name', '$mobile_no', '$state', '$district', '$taluka', '$village')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('Registration successful!');</script>";
+        } else {
+            echo "<script>alert('Error: " . $conn->error . "');</script>";
+        }
     }
 }
 
