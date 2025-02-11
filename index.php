@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 require 'config.php';
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname); 
 
 // Check connection
 if ($conn->connect_error) {
