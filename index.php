@@ -4,10 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database connection
-$servername = "localhost";
-$username = "cmjzmxbk_Amolpatilofficial_Admin";
-$password = "Shiva@88988898";
-$dbname = "cmjzmxbk_digitalvyapari_DB";
+require 'config.php';
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
