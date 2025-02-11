@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin_pass = mysqli_real_escape_string($conn, $_POST['admin_pass']);
 
     $query = "SELECT * FROM Admins WHERE username='$admin_user' AND password=SHA('$admin_pass')";
-    $result = $conn->query($query);
+    $result = $conn->query($query) ;
 
     if ($result->num_rows == 1) {
         $_SESSION['admin'] = $admin_user;
