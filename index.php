@@ -3,9 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database connection
+// Include database configuration file
 require 'config.php';
-
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
